@@ -19,6 +19,7 @@ public class OneCommand : MonoBehaviour
     {
         rig = GetComponent<Rigidbody2D>();
         rig.AddForce(Vector3.up * 270);
+        BirdSound_1.Play();
     }
 
     // Update is called once per frame

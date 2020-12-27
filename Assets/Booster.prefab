@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5164831911605653917}
   - component: {fileID: 3395211344502710770}
   - component: {fileID: 12446770360931940}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Booster
-  m_TagString: Untagged
+  m_TagString: Booster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -90,10 +90,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0030404925, y: 0.0060766935}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -104,5 +104,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.87, y: 0.86}
+  m_Size: {x: 0.9855387, y: 0.9693805}
   m_EdgeRadius: 0

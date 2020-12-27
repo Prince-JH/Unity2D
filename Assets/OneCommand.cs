@@ -6,14 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class OneCommand : MonoBehaviour
 {
-    public GameObject Column, Floor, White, Quit;
+    public GameObject Column, Floor, White, Quit, Booster;
     public AudioSource BirdSound_1, BirdSound_2, BirdSound_3, BirdSound_4;
     public Text Score;
     Rigidbody2D rig;
-    float NextTime = 0f;
-    int i, j, BestScore = 0;
+    float NextTime = 1.7f;
+    float boostTime = 0f;
+    int i, j, k, BestScore = 0;
     bool Stop = false;
     GameObject[] gameObjects = new GameObject[3];
+    GameObject[] boosters = new GameObject[3];
     // Start is called before the first frame update
     void Start()
     {
@@ -76,6 +78,32 @@ public class OneCommand : MonoBehaviour
             if (gameObjects[2].transform.position.x < -4)
                 Destroy(gameObjects[2]);
         }
+        //부스터 생성
+        if (Time.time > boostTime)
+        {
+            boostTime = Time.time + 10.2f;
+            boosters[k] = (GameObject)Instantiate(Booster, new Vector3(4, Random.Range(-1f, 3.2f), 0), Quaternion.identity);
+            if (++k == 3)
+                k = 0;
+        }
+        if (boosters[0])
+        {
+            boosters[0].transform.Translate(-0.03f, 0, 0);
+            if (boosters[0].transform.position.x < -4)
+                Destroy(boosters[0]);
+        }
+        if (boosters[1])
+        {
+            boosters[1].transform.Translate(-0.03f, 0, 0);
+            if (boosters[1].transform.position.x < -4)
+                Destroy(boosters[1]);
+        }
+        if (boosters[2])
+        {
+            boosters[2].transform.Translate(-0.03f, 0, 0);
+            if (boosters[2].transform.position.x < -4)
+                Destroy(boosters[2]);
+        }
     }
     private void OnTriggerEnter2D(Collider2D col)
     {
@@ -90,7 +118,12 @@ public class OneCommand : MonoBehaviour
             BirdSound_4.Play();
             GameOver();
         }
+        if(col.gameObject.name == "Booster(Clone)")
+        {
+            rig.AddForce(Vector3.forward * 200);
+        }
     }
+
     void GameOver()
     {
         //게임 오버
